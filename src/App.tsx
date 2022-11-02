@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { Container, Row, Col } from "react-bootstrap";
-import { AddButton, NavTabs } from "./components";
+import { AddButton, ModalComponent, NavTabs } from "./components";
 import { logStyles } from "./utils/logStyles";
 
 function App() {
@@ -55,6 +55,7 @@ function App() {
       <Row>
         <Col className="mt-4">
           <NavTabs />
+          <ModalComponent />
         </Col>
       </Row>
     </Container>
