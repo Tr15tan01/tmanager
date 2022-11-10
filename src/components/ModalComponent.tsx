@@ -3,16 +3,25 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 
-export function ModalComponent() {
+interface TaskProps {
+  addTask: () => void;
+}
+
+export function ModalComponent({ addTask }: TaskProps) {
   const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
+  //add addTask function to closing function
+  const handleClose = () => {
+    setShow(false);
+    addTask();
+  };
+  //show modal function
   const handleShow = () => setShow(true);
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
+      <Button variant="outline-success" onClick={handleShow}>
+        Add New Task
       </Button>
 
       <Modal show={show} onHide={handleClose}>

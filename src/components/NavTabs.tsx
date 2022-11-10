@@ -1,6 +1,6 @@
-import Button from "react-bootstrap/Button";
+// import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import { CustomAccordion } from "./index";
+import { CustomAccordion, ProgressBar } from "./index";
 
 function NavTabs() {
   return (
@@ -12,6 +12,7 @@ function NavTabs() {
           With supporting text below as a natural lead-in to additional content.
         </Card.Text>
         {/* <Button variant="primary">Go somewhere</Button> */}
+        <ProgressBar percentage={33} width={90} />
         <CustomAccordion />
       </Card.Body>
       <Card.Footer className="text-muted">2 days ago</Card.Footer>
