@@ -1,6 +1,6 @@
 // import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import { CustomAccordion, ProgressBar } from "./index";
+import { CustomAccordion, ProgressBar, ModalComponent } from "./index";
 
 function NavTabs() {
   return (
