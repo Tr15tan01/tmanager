@@ -7,6 +7,8 @@ export function SwitchComponent() {
   const [isCheckedOne, setIsCheckedOne] = useState<boolean>(false);
   const [isCheckedTwo, setIsCheckedTwo] = useState<boolean>(false);
 
+  const data = [{ chone: isCheckedOne }, { chtwo: isCheckedTwo }];
+
   const checkHandlerOne = (e: React.ChangeEvent<HTMLInputElement>) => {
     setIsCheckedOne(!isCheckedOne);
     // const item = localStorage.getItem("checked");
@@ -15,6 +17,7 @@ export function SwitchComponent() {
     // console.log({ item });
     // console.log({ isCheckedOne });
     // console.log(e.target.checked);
+    console.log(data);
   };
 
   //did not work until changed to ChangeEvent..
