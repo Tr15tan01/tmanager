@@ -1,29 +1,42 @@
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
-import { useEffect, useLayoutEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import { ModalComponent } from "./index";
 
 export function SwitchComponent() {
-  const [isChecked, setIsChecked] = useState<boolean>(false);
+  const [isCheckedOne, setIsCheckedOne] = useState<boolean>(false);
+  const [isCheckedTwo, setIsCheckedTwo] = useState<boolean>(false);
 
-  const checkHandler = () => {
-    setIsChecked(!isChecked);
-    const item = localStorage.getItem("checked");
-    localStorage.setItem("checked", isChecked.toString());
-    console.log({ item });
-    console.log({ isChecked });
+  const checkHandlerOne = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setIsCheckedOne(!isCheckedOne);
+    // const item = localStorage.getItem("checked");
+    // console.log({ item });
+    // localStorage.setItem("checked", isCheckedOne.toString());
+    // console.log({ item });
+    // console.log({ isCheckedOne });
+    // console.log(e.target.checked);
   };
 
-  useEffect(() => {
-    console.log("effect");
-    const item = localStorage.getItem("checked");
-    setIsChecked(!!item);
-    console.log(item);
-  }, []);
+  //did not work until changed to ChangeEvent..
+  const checkHandlerTwo = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setIsCheckedTwo(!isCheckedTwo);
+    // const item = localStorage.getItem("checked");
+    // localStorage.setItem("checked", isCheckedTwo.toString());
+    // console.log({ item });
+    console.log({ isCheckedTwo });
+    console.log(e.target.checked);
+  };
 
-  useLayoutEffect(() => {
-    console.log("layoutEffecg");
-  });
+  // useEffect(() => {
+  //   console.log("effect");
+  //   const item = localStorage.getItem("checked");
+  //   setIsChecked(!!item);
+  //   console.log(item);
+  // }, []);
+
+  // useLayoutEffect(() => {
+  //   console.log("layoutEffecg");
+  // });
 
   return (
     <Container className="m-2">
@@ -32,15 +45,16 @@ export function SwitchComponent() {
           type="switch"
           id="custom-switch"
           label="Check this switch of you have completed task one"
-          onChange={checkHandler}
-          checked={isChecked}
+          onChange={checkHandlerOne}
+          checked={isCheckedOne}
         />
         <hr />
         <Form.Check
           type="switch"
           id="custom-switch1"
           label="Check this switch of you have completed task two"
-          onChange={checkHandler}
+          onChange={checkHandlerTwo}
+          checked={isCheckedTwo}
         />
         <hr />
       </Form>
