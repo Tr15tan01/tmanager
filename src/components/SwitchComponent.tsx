@@ -7,14 +7,20 @@ export function SwitchComponent() {
   const [isCheckedOne, setIsCheckedOne] = useState<boolean>(false);
   const [isCheckedTwo, setIsCheckedTwo] = useState<boolean>(false);
 
+  const checkData = [
+    { id: "1", label: "switch one label", checked: true },
+    { id: "2", label: "switch tow label", checked: false },
+  ];
+
   const checkHandlerOne = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setIsCheckedOne(!isCheckedOne);
+    // setIsCheckedOne(!isCheckedOne);
     // const item = localStorage.getItem("checked");
     // console.log({ item });
     // localStorage.setItem("checked", isCheckedOne.toString());
     // console.log({ item });
     // console.log({ isCheckedOne });
     // console.log(e.target.checked);
+    console.log(e.target.id, e.target.checked);
   };
 
   //did not work until changed to ChangeEvent..
@@ -27,38 +33,56 @@ export function SwitchComponent() {
     console.log(e.target.checked);
   };
 
-  // useEffect(() => {
-  //   console.log("effect");
-  //   const item = localStorage.getItem("checked");
-  //   setIsChecked(!!item);
-  //   console.log(item);
-  // }, []);
+  const [singleCheck, setSingleCheck] = useState({ id: "", checked: false });
+  const [chdata, setChdata] = useState([singleCheck]);
 
-  // useLayoutEffect(() => {
-  //   console.log("layoutEffecg");
-  // });
+  //did not work until changed to ChangeEvent..
+  const checkHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // console.log(e.target.checked, e.target.id);
+    const id = e.target.id;
+    const checked = e.target.checked;
+    setSingleCheck({ id: id, checked: checked });
+    // setChdata([...chdata, singleCheck]);
+    console.log("chdata", chdata);
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    console.log("chdata", chdata);
+  };
+
+  const addTask = () => {
+    setChdata([...chdata, singleCheck]);
+  };
 
   return (
     <Container className="m-2">
       <Form>
-        <Form.Check
-          type="switch"
-          id="custom-switch"
-          label="Check this switch of you have completed task one"
-          onChange={checkHandlerOne}
-          checked={isCheckedOne}
-        />
-        <hr />
-        <Form.Check
-          type="switch"
-          id="custom-switch1"
-          label="Check this switch of you have completed task two"
-          onChange={checkHandlerTwo}
-          checked={isCheckedTwo}
-        />
-        <hr />
+        {checkData.map((item) => {
+          return (
+            <>
+              <Form.Check
+                key={item.id}
+                type="switch"
+                id={item.id}
+                label={item.label}
+                onChange={checkHandler}
+                // checked={item.checked}
+              />
+              <hr />
+            </>
+          );
+        })}
       </Form>
-      <ModalComponent addTask={() => console.log("from navtans")} />
+      <div>
+        {chdata.map((item) => {
+          return (
+            <p>
+              {item.id} {item.checked.toString()}
+            </p>
+          );
+        })}
+      </div>
+      <ModalComponent addTask={addTask} />
     </Container>
   );
 }
