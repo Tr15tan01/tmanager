@@ -2,10 +2,14 @@
 import Card from "react-bootstrap/Card";
 import { CustomAccordion, ProgressBar, ModalComponent } from "./index";
 
-function NavTabs() {
+interface TabsProps {
+  header: string;
+}
+
+function NavTabs({ header }: TabsProps) {
   return (
     <Card className="text-center">
-      <Card.Header>Featured</Card.Header>
+      <Card.Header>{header}</Card.Header>
       <Card.Body>
         <Card.Title>Special title treatment</Card.Title>
         <Card.Text>

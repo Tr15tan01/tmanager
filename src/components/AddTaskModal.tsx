@@ -6,9 +6,16 @@ import Modal from "react-bootstrap/Modal";
 interface TaskProps {
   addTask: () => void;
   heading: string;
+  handleEmailChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  email: string;
 }
 
-export function ModalComponent({ addTask, heading }: TaskProps) {
+export function AddTaskModal({
+  addTask,
+  heading,
+  handleEmailChange,
+  email,
+}: TaskProps) {
   const [show, setShow] = useState(false);
 
   //add addTask function to closing function
@@ -34,8 +41,10 @@ export function ModalComponent({ addTask, heading }: TaskProps) {
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Email address</Form.Label>
               <Form.Control
-                type="email"
+                type="text"
                 placeholder="name@example.com"
+                value={email}
+                onChange={handleEmailChange}
                 autoFocus
               />
             </Form.Group>

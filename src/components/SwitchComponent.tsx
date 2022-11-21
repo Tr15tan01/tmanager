@@ -61,7 +61,10 @@ export function SwitchComponent() {
         />
         <hr />
       </Form>
-      <ModalComponent addTask={() => console.log("from navtans")} />
+      <ModalComponent
+        addTask={() => console.log("from navtans")}
+        heading="test heading"
+      />
     </Container>
   );
 }
