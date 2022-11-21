@@ -75,7 +75,7 @@ export function SwitchComponent() {
           );
         })}
       </div>
-      <ModalComponent addTask={addTask} />
+      <ModalComponent addTask={addTask} heading="dummy heading" />
       <ModalComponent
         addTask={() => console.log("from navtans")}
         heading="test heading"
