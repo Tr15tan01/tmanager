@@ -25,10 +25,15 @@ export function AddTaskModal({
   //add addTask function to closing function
   const handleClose = () => {
     setShow(false);
-    addTask();
   };
   //show modal function
   const handleShow = () => setShow(true);
+
+  //submit function
+  const handleSubmit = () => {
+    addTask();
+    setShow(false);
+  };
 
   return (
     <>
@@ -38,7 +43,7 @@ export function AddTaskModal({
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>{heading}</Modal.Title>
+          <Modal.Title>Enter Task Details</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
@@ -82,7 +87,7 @@ export function AddTaskModal({
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="primary" onClick={handleSubmit}>
             Save Changes
           </Button>
         </Modal.Footer>

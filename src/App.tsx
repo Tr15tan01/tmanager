@@ -66,11 +66,11 @@ function App() {
       </Row>
       <Row>
         <Col className="mt-4">
-          <NavTabs
+          {/* <NavTabs
             header={taskData.email}
             title={taskData.taskTitle}
             description={taskData.description}
-          />
+          /> */}
         </Col>
       </Row>
       <Row>
