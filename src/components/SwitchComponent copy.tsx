@@ -1,6 +1,5 @@
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
-import uuid from "react-uuid";
 import React, { useState } from "react";
 import { AddSubtaskModal } from "./index";
 
@@ -42,8 +41,8 @@ export function SwitchComponent() {
   const checkHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const name = e.target.name;
     const checked = e.target.checked;
-    const id = e.target.id;
-    console.log(name, checked, id);
+    const value = e.target.value;
+    console.log(name, checked, value);
     setSubTaskData({ ...subTaskData, [name]: checked });
     setSubTasksData([...subTasksData, subTaskData]);
   };
@@ -55,9 +54,9 @@ export function SwitchComponent() {
     return (
       <>
         <Form.Check
-          key={uuid()}
+          key={subTask}
           type="switch"
-          id={uuid()}
+          id={subTask}
           name={subTask}
           label={subTask}
           onChange={checkHandler}
@@ -72,12 +71,11 @@ export function SwitchComponent() {
   return (
     <Container className="m-2">
       <Form>
-        {chdata.map((item: any, idx: number) => {
-          return <div key={idx}>{item}</div>;
+        {chdata.map((item: any) => {
+          return <>{item}</>;
         })}
       </Form>
       <AddSubtaskModal addSubTask={addSubTask} handleChange={handleChange} />
-      <p>is ot is not</p>
     </Container>
   );
 }
