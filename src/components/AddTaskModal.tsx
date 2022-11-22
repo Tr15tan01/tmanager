@@ -6,15 +6,19 @@ import Modal from "react-bootstrap/Modal";
 interface TaskProps {
   addTask: () => void;
   heading: string;
-  handleEmailChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   email: string;
+  taskTitle: string;
+  description: string;
 }
 
 export function AddTaskModal({
   addTask,
   heading,
-  handleEmailChange,
+  handleChange,
   email,
+  taskTitle,
+  description,
 }: TaskProps) {
   const [show, setShow] = useState(false);
 
@@ -43,17 +47,34 @@ export function AddTaskModal({
               <Form.Control
                 type="text"
                 placeholder="name@example.com"
-                value={email}
-                onChange={handleEmailChange}
+                // value={email}
+                name="email"
+                onChange={handleChange}
                 autoFocus
+              />
+            </Form.Group>
+            {/* addTask Form */}
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label>Task Name</Form.Label>
+              <Form.Control
+                type="text"
+                name="taskTitle"
+                placeholder="Add Task Here"
+                // value={taskTitle}
+                onChange={handleChange}
               />
             </Form.Group>
             <Form.Group
               className="mb-3"
               controlId="exampleForm.ControlTextarea1"
             >
-              <Form.Label>Example textarea</Form.Label>
-              <Form.Control as="textarea" rows={3} />
+              <Form.Label>Project Description</Form.Label>
+              <Form.Control
+                as="textarea"
+                rows={3}
+                name="description"
+                onChange={handleChange}
+              />
             </Form.Group>
           </Form>
         </Modal.Body>

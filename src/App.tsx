@@ -16,16 +16,37 @@ function App() {
   //function for adding task
   const addTask = () => {
     console.log("task set");
-    setTasks([...tasks, <NavTabs header={email} />]);
+    setTasks([
+      ...tasks,
+      <NavTabs
+        header={taskData.email}
+        title={taskData.taskTitle}
+        description={taskData.description}
+      />,
+    ]);
   };
 
   //geyt input value
   const [email, setEmail] = useState("");
-  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(e.target.value);
+  const [taskTitle, setTaskTitle] = useState("");
+  const [taskData, setTaskData] = useState({
+    email: "",
+    taskTitle: "",
+    description: "",
+  });
+  // const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   setEmail(e.target.value);
+  // };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // setEmail(e.target.value);
+    const name = e.target.name;
+    const value = e.target.value;
+    console.log(name, value);
+    setTaskData({ ...taskData, [name]: value });
   };
 
-  console.log(email);
+  console.log(taskData);
 
   const [tasks, setTasks] = useState<JSX.Element[]>([]);
   const [heading, setHeading] = useState("heading here");
@@ -36,14 +57,20 @@ function App() {
           <AddTaskModal
             addTask={addTask}
             heading={heading}
-            handleEmailChange={handleEmailChange}
-            email={email}
+            handleChange={handleChange}
+            email={taskData.email}
+            taskTitle={taskData.taskTitle}
+            description={taskData.description}
           />
         </Col>
       </Row>
       <Row>
         <Col className="mt-4">
-          <NavTabs header={email} />
+          <NavTabs
+            header={taskData.email}
+            title={taskData.taskTitle}
+            description={taskData.description}
+          />
         </Col>
       </Row>
       <Row>

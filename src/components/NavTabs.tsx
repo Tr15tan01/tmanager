@@ -4,17 +4,17 @@ import { CustomAccordion, ProgressBar, ModalComponent } from "./index";
 
 interface TabsProps {
   header: string;
+  title: string;
+  description: string;
 }
 
-function NavTabs({ header }: TabsProps) {
+function NavTabs({ header, title, description }: TabsProps) {
   return (
     <Card className="text-center">
       <Card.Header>{header}</Card.Header>
       <Card.Body>
-        <Card.Title>Special title treatment</Card.Title>
-        <Card.Text>
-          With supporting text below as a natural lead-in to additional content.
-        </Card.Text>
+        <Card.Title>{title}</Card.Title>
+        <Card.Text>{description}</Card.Text>
         {/* <Button variant="primary">Go somewhere</Button> */}
         <ProgressBar percentage={33} width={90} />
         <CustomAccordion />
