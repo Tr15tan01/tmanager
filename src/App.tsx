@@ -2,15 +2,7 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { Container, Row, Col } from "react-bootstrap";
-import {
-  AddButton,
-  AddTaskModal,
-  ModalComponent,
-  NavTabs,
-  ProgressBar,
-  Tasks,
-} from "./components";
-// import { logStyles } from "./utils/logStyles";
+import { AddTaskModal, NavTabs } from "./components";
 
 function App() {
   //function for adding task
@@ -22,21 +14,18 @@ function App() {
         header={taskData.email}
         title={taskData.taskTitle}
         description={taskData.description}
+        createdAt={new Date().toLocaleString()}
+        percentage={34}
       />,
     ]);
   };
 
   //geyt input value
-  const [email, setEmail] = useState("");
-  const [taskTitle, setTaskTitle] = useState("");
   const [taskData, setTaskData] = useState({
     email: "",
     taskTitle: "",
     description: "",
   });
-  // const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   setEmail(e.target.value);
-  // };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     // setEmail(e.target.value);
@@ -64,18 +53,9 @@ function App() {
           />
         </Col>
       </Row>
+
       <Row>
         <Col className="mt-4">
-          {/* <NavTabs
-            header={taskData.email}
-            title={taskData.taskTitle}
-            description={taskData.description}
-          /> */}
-        </Col>
-      </Row>
-      <Row>
-        <Col className="mt-4">
-          <Tasks />
           {/* <ProgressBar percentage={66} /> */}
           {tasks.map((item) => {
             return item;

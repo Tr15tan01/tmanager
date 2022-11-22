@@ -20,6 +20,7 @@ export function AddTaskModal({
   taskTitle,
   description,
 }: TaskProps) {
+  //show hide modal
   const [show, setShow] = useState(false);
 
   //add addTask function to closing function
@@ -46,26 +47,23 @@ export function AddTaskModal({
           <Modal.Title>Enter Task Details</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form>
+          <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Email address</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="name@example.com"
-                // value={email}
+                placeholder="Add New Task"
                 name="email"
                 onChange={handleChange}
                 autoFocus
               />
             </Form.Group>
-            {/* addTask Form */}
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Task Name</Form.Label>
               <Form.Control
                 type="text"
                 name="taskTitle"
                 placeholder="Add Task Here"
-                // value={taskTitle}
                 onChange={handleChange}
               />
             </Form.Group>

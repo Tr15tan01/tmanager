@@ -3,21 +3,27 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 
-interface TaskProps {
-  addTask: () => void;
-  heading: string;
+interface SubTaskProps {
+  addSubTask: () => void;
+  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export function ModalComponent({ addTask, heading }: TaskProps) {
+export function AddSubtaskModal({ addSubTask, handleChange }: SubTaskProps) {
+  //show hide modal
   const [show, setShow] = useState(false);
 
   //add addTask function to closing function
   const handleClose = () => {
     setShow(false);
-    addTask();
   };
   //show modal function
   const handleShow = () => setShow(true);
+
+  //submit function
+  const handleSubmit = () => {
+    addSubTask();
+    setShow(false);
+  };
 
   return (
     <>
@@ -27,24 +33,20 @@ export function ModalComponent({ addTask, heading }: TaskProps) {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>{heading}</Modal.Title>
+          <Modal.Title>Enter Subtask Details</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form>
+          <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Email address</Form.Label>
               <Form.Control
-                type="email"
-                placeholder="name@example.com"
+                type="text"
+                placeholder="Add Subtask Here"
+                name="subTask"
+                onChange={handleChange}
+                autoComplete="false"
                 autoFocus
               />
-            </Form.Group>
-            <Form.Group
-              className="mb-3"
-              controlId="exampleForm.ControlTextarea1"
-            >
-              <Form.Label>Example textarea</Form.Label>
-              <Form.Control as="textarea" rows={3} />
             </Form.Group>
           </Form>
         </Modal.Body>
@@ -52,7 +54,7 @@ export function ModalComponent({ addTask, heading }: TaskProps) {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="primary" onClick={handleSubmit}>
             Save Changes
           </Button>
         </Modal.Footer>

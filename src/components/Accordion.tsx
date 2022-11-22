@@ -5,11 +5,11 @@ export function CustomAccordion() {
   return (
     <Accordion>
       <Accordion.Item eventKey="0">
-        <Accordion.Header>Accordion Item #1</Accordion.Header>
+        <Accordion.Header>Click Here To Manage SubTasks</Accordion.Header>
         <Accordion.Body>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniamia deserunt mollit anim id est laborum.
+          Add subtasks here. Hit add button and then enter as many subtasks as
+          you wish :-)
+          <hr />
           <SwitchComponent />
         </Accordion.Body>
       </Accordion.Item>
