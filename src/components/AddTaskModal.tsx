@@ -4,6 +4,7 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
+import { ToastOnStart } from "./index";
 
 interface TaskProps {
   addTask: () => void;
@@ -49,7 +50,7 @@ export function AddTaskModal({
     <>
       <OverlayTrigger
         placement="right"
-        delay={{ show: 250, hide: 400 }}
+        delay={{ show: 250, hide: 300 }}
         overlay={renderTooltip}
       >
         <Button variant="outline-success" onClick={handleShow}>
