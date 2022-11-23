@@ -28,7 +28,7 @@ export function AddSubtaskModal({ addSubTask, handleChange }: SubTaskProps) {
   return (
     <>
       <Button variant="outline-success" onClick={handleShow}>
-        Add New Task
+        Add New SubTask
       </Button>
 
       <Modal show={show} onHide={handleClose}>

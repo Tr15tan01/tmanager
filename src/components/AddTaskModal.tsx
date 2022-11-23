@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
 
 interface TaskProps {
   addTask: () => void;
@@ -36,12 +38,24 @@ export function AddTaskModal({
     setShow(false);
   };
 
+  //tooltip
+  const renderTooltip = (props: any) => (
+    <Tooltip id="button-tooltip" {...props}>
+      Hit this button to add new task
+    </Tooltip>
+  );
+
   return (
     <>
-      <Button variant="outline-success" onClick={handleShow}>
-        Add New Task
-      </Button>
-
+      <OverlayTrigger
+        placement="right"
+        delay={{ show: 250, hide: 400 }}
+        overlay={renderTooltip}
+      >
+        <Button variant="outline-success" onClick={handleShow}>
+          Add New Task
+        </Button>
+      </OverlayTrigger>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Enter Task Details</Modal.Title>

@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { Container, Row, Col } from "react-bootstrap";
 import { AddTaskModal, NavTabs } from "./components";
+import uuid from "react-uuid";
 
 function App() {
   //function for adding task
@@ -58,7 +59,7 @@ function App() {
         <Col className="mt-4">
           {/* <ProgressBar percentage={66} /> */}
           {tasks.map((item) => {
-            return item;
+            return <div key={uuid()}>{item}</div>;
           })}
         </Col>
       </Row>

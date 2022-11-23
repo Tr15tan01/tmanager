@@ -1,5 +1,6 @@
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
+import Button from "react-bootstrap/Button";
 import uuid from "react-uuid";
 import React, { useState } from "react";
 import { AddSubtaskModal } from "./index";
@@ -35,20 +36,28 @@ export function SwitchComponent() {
   };
 
   //get checks data
-  const [subTaskData, setSubTaskData] = useState({});
+  // const [subTaskData, setSubTaskData] = useState({});
 
-  const [subTasksData, setSubTasksData] = useState<any[]>([]);
+  const [subTasksData, setSubTasksData] = useState<boolean[]>([]);
 
   const checkHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const name = e.target.name;
+    // const name = e.target.name;
     const checked = e.target.checked;
-    const id = e.target.id;
-    console.log(name, checked, id);
-    setSubTaskData({ ...subTaskData, [name]: checked });
-    setSubTasksData([...subTasksData, subTaskData]);
+    // const id = e.target.id;
+    // console.log(name, checked, id);
+    // setSubTaskData({ ...subTaskData, [name]: checked });
+    setSubTasksData([...subTasksData, checked]);
+    const checkedItems = subTasksData.filter((item) => item === true);
+    console.log("subTasksData.length", subTasksData.length);
+    console.log("checkedItems.length", checkedItems.length);
+    const percentage = (checkedItems.length / subTasksData.length) * 100;
+    console.log({ percentage });
   };
 
-  console.log(subTaskData);
+  console.log(subTasksData);
+  const temp = subTasksData.forEach((item, idx) => {
+    console.log(item, idx);
+  });
   // console.log("subTasksData", subTasksData);
 
   const FormCheck = () => {
